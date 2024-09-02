@@ -38,6 +38,19 @@ const CardContainer = styled.div`
   white-space: nowrap; /* Prevent wrapping */
 `;
 
+const Video = styled.video`
+  width: 80%;
+  height: 70%; /* Adjust to fit within card */
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  
+
+  &:hover {
+    transform: scale(1.30) translateY(-10%);
+    transform-origin: center center; 
+  }
+`;
+
 const StyledCard = styled.div`
   background: transparent;
   // margin-right: 10px; /* Remove space between cards */
@@ -61,19 +74,6 @@ const StyledCard = styled.div`
   &:hover ${Video} {
     transform: scale(1.3) translateY(-10%);
     transform-origin: center center; /* Scale from the center */
-  }
-`;
-
-const Video = styled.video`
-  width: 80%;
-  height: 70%; /* Adjust to fit within card */
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  
-
-  &:hover {
-    transform: scale(1.30) translateY(-10%);
-    transform-origin: center center; 
   }
 `;
 
