@@ -40,6 +40,7 @@ const RailCardsContainer = styled.div`
   backdrop-filter: blur(10px);
   padding: 20px;
   z-index: 1; /* Ensure it is on top of other content */
+  
 `;
 
 const ToggleButton = styled.button`
@@ -47,15 +48,24 @@ const ToggleButton = styled.button`
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
   color: white;
   border: none;
-  border-radius: 4px;
-  padding: 10px;
+  border-radius: 50%; /* Make the button circular */
+  width: 50px; /* Set a fixed width */
+  height: 50px; /* Set a fixed height */
+  padding: 15px; /* Ensure padding is equal to create a circle */
   cursor: pointer;
   z-index: 2; /* Ensure button is above the video */
   font-size: 20px;
+  display:flex;
+  align-item:center;
+  justify-content:center;
   transition: opacity 0.3s ease; /* Smooth transition for button appearance */
+
+    &:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Change background color on hover */
+  }
 `;
 
 
@@ -64,6 +74,8 @@ const MainWindow = () => {
   const [selectedVideo, setSelectedVideo] = useState(null); // Currently selected video
   const [showRailCards, setShowRailCards] = useState(false); // State to toggle RailCards visibility
   const [showToggleButton, setShowToggleButton] = useState(false); // State to show/hide the toggle button
+  const [timer, setTimer] = useState(null);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -76,11 +88,26 @@ const MainWindow = () => {
     fetchData();
   }, []);
 
-  const selectVideo = (video) => {
+  const selectVideo =(video) => {
     setSelectedVideo(video);
-    setShowRailCards(false); // Optionally hide rail cards after selecting a video
-  };
+    showRailCardsWithTimer();
+  }
 
+ const showRailCardsWithTimer =() => {
+  setShowRailCards(true);
+  clearTimeout(timer);
+  const newTimer = setTimeout(()=>{
+    setShowRailCards(false);
+  },5000);
+  setTimer(newTimer);
+
+ };
+
+ const hideRailCards =() =>{
+  setShowRailCards(false);
+  clearTimeout(timer);
+ }
+  
   return (
     <Container
       onMouseEnter={() => setShowToggleButton(true)}
@@ -106,13 +133,13 @@ const MainWindow = () => {
       )}
 
       {showToggleButton && !showRailCards && (
-        <ToggleButton onClick={() => setShowRailCards(true)}>
+        <ToggleButton onClick={showRailCardsWithTimer}>
           <KeyboardDoubleArrowUpIcon />
         </ToggleButton>
       )}
 
       {showToggleButton && showRailCards && (
-        <ToggleButton onClick={() => setShowRailCards(false)}>
+        <ToggleButton onClick={hideRailCards}>
           <KeyboardDoubleArrowDownIcon />
         </ToggleButton>
       )}
