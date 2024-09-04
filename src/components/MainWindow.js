@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { getVideoCards } from "../utils"; // Ensure this path is correct
+import { getVideoCards } from "../utils"; 
 import RailCards from "./cards/railcards";
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
@@ -48,41 +48,41 @@ const ToggleButton = styled.button`
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.5); 
   color: white;
   border: none;
-  border-radius: 50%; /* Make the button circular */
-  width: 50px; /* Set a fixed width */
-  height: 50px; /* Set a fixed height */
-  padding: 15px; /* Ensure padding is equal to create a circle */
+  border-radius: 50%; 
+  width: 50px; 
+  height: 50px;
+  padding: 15px; 
   cursor: pointer;
-  z-index: 2; /* Ensure button is above the video */
+  z-index: 2; 
   font-size: 20px;
   display:flex;
   align-item:center;
   justify-content:center;
-  transition: opacity 0.3s ease; /* Smooth transition for button appearance */
+  transition: opacity 0.2s ease;
 
     &:hover {
-    background-color: rgba(0, 0, 0, 0.7); /* Change background color on hover */
+    background-color: rgba(0, 0, 0, 0.7); 
   }
 `;
 
 
 const MainWindow = () => {
-  const [videos, setVideos] = useState([]); // List of video objects
-  const [selectedVideo, setSelectedVideo] = useState(null); // Currently selected video
-  const [showRailCards, setShowRailCards] = useState(false); // State to toggle RailCards visibility
-  const [showToggleButton, setShowToggleButton] = useState(false); // State to show/hide the toggle button
+  const [videos, setVideos] = useState([]); 
+  const [selectedVideo, setSelectedVideo] = useState(null); 
+  const [showRailCards, setShowRailCards] = useState(false); 
+  const [showToggleButton, setShowToggleButton] = useState(false); 
   const [timer, setTimer] = useState(null);
-
+  const railCardsRef = useRef(null);
 
   useEffect(() => {
     async function fetchData() {
       const videosData = await getVideoCards();
       if (videosData && videosData.length > 0) {
-        setVideos(videosData); // Set the list of videos
-        setSelectedVideo(videosData[0]); // Set the default selected video
+        setVideos(videosData); 
+        setSelectedVideo(videosData[0]); 
       }
     }
     fetchData();
@@ -97,7 +97,9 @@ const MainWindow = () => {
   setShowRailCards(true);
   clearTimeout(timer);
   const newTimer = setTimeout(()=>{
-    setShowRailCards(false);
+    if (railCardsRef.current && !railCardsRef.current.matches(':hover')) {
+      setShowRailCards(false);
+    }
   },5000);
   setTimer(newTimer);
 
@@ -107,6 +109,15 @@ const MainWindow = () => {
   setShowRailCards(false);
   clearTimeout(timer);
  }
+
+ const handleRailCardsMouseEnter = () => {
+  clearTimeout(timer);
+};
+
+const handleRailCardsMouseLeave = () => {
+  showRailCardsWithTimer();
+};
+
   
   return (
     <Container
@@ -116,10 +127,11 @@ const MainWindow = () => {
       <VideoContainer style={{ height: showRailCards ? "80%" : "100%" }}>
         {selectedVideo ? (
           <Video
-            src={selectedVideo.url} // Use the URL from the selected video
+            src={selectedVideo.url} 
             autoPlay
-            muted // Ensure video is muted for autoplay
-            controls={false} // Hide video controls
+            loop
+            muted 
+            controls={false} 
           />
         ) : (
           <p>Loading...</p>
@@ -127,7 +139,11 @@ const MainWindow = () => {
       </VideoContainer>
 
       {showRailCards && (
-        <RailCardsContainer>
+        <RailCardsContainer
+        ref={railCardsRef}
+        onMouseEnter={handleRailCardsMouseEnter}
+        onMouseLeave={handleRailCardsMouseLeave}
+        >
           <RailCards videos={videos} onVideoSelect={selectVideo} />
         </RailCardsContainer>
       )}
