@@ -1,32 +1,63 @@
 [
-    {
-      "id": "1",
-      "title": "Aaj Tak",
-      "url": "https://cdn.pixabay.com/video/2022/02/27/109017-683077126_large.mp4",
-      "showtitle":"Special Programme"
+  {
+    "id": "1",
+    "title": "Aaj Tak",
+    "url": "https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8",
+    "showtitle":"Special Programme"
+  },
+  {
+    "id": "2",
+    "title": "Zee News",
+    "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/Zeetvhd1/default/zeetvhd1.m3u8",
+    "showtitle":"Zee Programme"
+  },
+  {
+      "id": "3",
+      "title": "India Today",
+      "url": "https://abplivetv.akamaized.net/hls/live/2043010/hindi/master.m3u8",
+      "showtitle":"Celebrating Zakir Hussain"
     },
     {
-      "id": "2",
-      "title": "Zee News",
-      "url": "https://cdn.pixabay.com/video/2022/11/27/140637-775595899_tiny.mp4",
-      "showtitle":"Zee Programme"
+      "id": "4",
+      "title": "Good News Today",
+      "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/Andtvhd1/default/andtvhd1.m3u8",
+      "showtitle":"Good Luck Special"
     },
     {
-        "id": "3",
-        "title": "India Today",
-        "url": "https://cdn.pixabay.com/video/2015/10/18/1080-142790249_medium.mp4",
-        "showtitle":"Celebrating Zakir Hussain"
+      "id": "5",
+      "title": "Zee Business",
+      "url": "https://aasthaott.akamaized.net/110923/smil:aasthatv.smil/chunklist_b1328000.m3u8",
+      "showtitle":"Baat Duniyaki"
+    },
+
+      {
+        "id": "1",
+        "title": "Aaj Tak",
+        "url": "https://media.istockphoto.com/id/1216328068/video/helicopter-flying-against-blue-sky-and-clouds.mp4?s=mp4-640x640-is&k=20&c=X99mMlFDLX3YDHq3C2NQXpn4cehiyW3Q32epv0hH5Xg=",
+        "showtitle":"Special Programme"
       },
       {
-        "id": "4",
-        "title": "Good News Today",
-        "url": "https://cdn.pixabay.com/video/2016/07/06/3723-173719869_tiny.mp4",
-        "showtitle":"Good Luck Special"
+        "id": "2",
+        "title": "Zee News",
+        "url": "https://cdn.pixabay.com/video/2022/02/27/109017-683077126_large.mp4",
+        "showtitle":"Zee Programme"
       },
       {
-        "id": "5",
-        "title": "Zee Business",
-        "url": "https://cdn.pixabay.com/video/2022/04/17/114145-700585495_tiny.mp4",
-        "showtitle":"Baat Duniyaki"
-      }
-  ]
+          "id": "3",
+          "title": "India Today",
+          "url": "https://cdn.pixabay.com/video/2015/10/18/1080-142790249_medium.mp4",
+          "showtitle":"Celebrating Zakir Hussain"
+        },
+        {
+          "id": "4",
+          "title": "Good News Today",
+          "url": "https://cdn.pixabay.com/video/2016/07/06/3723-173719869_tiny.mp4",
+          "showtitle":"Good Luck Special"
+        },
+        {
+          "id": "5",
+          "title": "Zee Business",
+          "url": "https://cdn.pixabay.com/video/2022/04/17/114145-700585495_tiny.mp4",
+          "showtitle":"Baat Duniyaki"
+        }
+]
