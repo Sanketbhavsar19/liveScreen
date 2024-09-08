@@ -14,13 +14,13 @@
   {
       "id": "3",
       "title": "India Today",
-      "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/Andtvhd1/default/andtvhd1.m3u8",
+      "url": "https://abplivetv.akamaized.net/hls/live/2043010/hindi/master.m3u8",
       "showtitle":"Celebrating Zakir Hussain"
     },
     {
       "id": "4",
       "title": "Good News Today",
-      "url": "https://spt-sonykal-1-us.lg.wurl.tv/playlist.m3u8",
+      "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/Andtvhd1/default/andtvhd1.m3u8",
       "showtitle":"Good Luck Special"
     },
     {

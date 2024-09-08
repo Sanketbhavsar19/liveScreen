@@ -4,7 +4,7 @@ import MainWindow from './components/MainWindow';
 function App() {
   return (
     <div className="App">
-      <main>
+      <main className='main'>
         <MainWindow />
       </main>
     </div>
